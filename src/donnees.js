@@ -12,7 +12,7 @@ export async function lireJson(chemin) {
       const contenu = await readFile(chemin, "utf-8");
       return JSON.parse(contenu);
     }catch (erreur){
-      throw new Error(`Impossoble de lire le fichier JISON: ${chemin}`,{cause: erreur});
+      throw new Error(`Impossible de lire le fichier JSON : ${chemin} : `,{cause: erreur});
     }
   
 }
@@ -74,4 +74,23 @@ export function creerReleve(parcelle, humiditeTexte, temperatureTexte, date) {
 // puis renvoie le nouveau nombre de relevés.
 export async function ajouterReleve(chemin, releve) {
   //throw new Error("TODO Membre 4 : coder ajouterReleve dans src/donnees.js");
+  try {
+        const contenu = await readFile(chemin, "utf-8");
+
+        const releves = JSON.parse(contenu);
+
+        releves.push(releve);
+
+        const nouveauContenu = JSON.stringify(releves, null, 2);
+
+        await writeFile(chemin, nouveauContenu, "utf-8");
+
+        return releves.length;
+
+    } catch (erreur) {
+        throw new Error(
+            `Impossible d'ajouter le relevé dans le fichier : ${chemin}`,
+            { cause: erreur }
+        );
+    }
 }
