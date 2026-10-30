@@ -13,7 +13,7 @@ return recoltes
 // Une surface nulle ou négative est une erreur : on lance une RangeError.
 export function rendement(kg, surface){
   if (surface <= 0){
-    throw new RangeError("La surface doit e^tre supérieur à 0");
+    throw new RangeError("La surface doit etre supérieur à 0");
   }
   return Math.round(kg/surface);
  
@@ -21,7 +21,7 @@ export function rendement(kg, surface){
 
 // Renvoie le revenu estimé en FCFA.
 export function revenu(kg, prixKg) {
-  throw new Error("TODO Membre 3 : coder revenu dans src/recoltes.js");
+  return kg*prixKg
 }
 
 // Renvoie une ligne de bilan par parcelle, dans le même ordre que parcelles.
