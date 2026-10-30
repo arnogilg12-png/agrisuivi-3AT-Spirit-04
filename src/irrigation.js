@@ -11,9 +11,14 @@ return releves.filter(releve=> {
 // Renvoie la moyenne des humidités, arrondie à l'entier le plus proche.
 // Liste vide : null (on ne peut pas calculer de moyenne).
 export function moyenneHumidite(releves) {
-  throw new Error(
-    "TODO Membre 2 : coder moyenneHumidite dans src/irrigation.js",
-  );
+  if (releves.length===0){
+    return null;
+  }
+const somme = releves.reduce((total,releve) =>{
+  return total+releve.humidite;
+}, 0);
+const moyenne = somme / releves.length;
+  return Math.round(moyenne);
 }
 
 // Renvoie 'INCONNU', 'ARROSER', 'DRAINER' ou 'OK'.
