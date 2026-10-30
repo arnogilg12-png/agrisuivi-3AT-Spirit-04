@@ -14,7 +14,8 @@ export function formaterParcelle(parcelle) {
 
 
 // Renvoie la parcelle dont l'id est demandé, ou undefined si elle n'existe pas.
-
+export function trouverParcelle(parcelles, id) {
+  return parcelles.find((parcelle) => parcelle.id===id)
    // "TODO Membre 1 : coder trouverParcelle dans src/parcelles.js",
   
 
