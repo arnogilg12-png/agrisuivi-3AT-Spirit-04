@@ -21,12 +21,17 @@ export function trouverParcelle(parcelles, id) {
 
 
 // Renvoie un nouveau tableau avec seulement les parcelles de cette culture.
-
+export function parcellesParCulture(parcelles, culture) {
+  
+return parcelles.filter((parcelle) => parcelle.culture===culture);
+}
 // "TODO Membre 1 : coder parcellesParCulture dans src/parcelles.js",
 
 
 // Renvoie la somme des surfaces (en hectares). Liste vide : 0.
-
+export function surfaceTotale(parcelles) {
+ return parcelles.reduce((total, parcelle) => total + parcelle.surface, 0);
+}
   //throw new Error("TODO Membre 1 : coder surfaceTotale dans src/parcelles.js");
 
 
