@@ -7,24 +7,32 @@ import { join } from "node:path";
 // Lit un fichier JSON et renvoie son contenu converti en valeur JavaScript.
 // En cas de problème, lance une erreur claire qui garde l'erreur d'origine comme cause.
 export async function lireJson(chemin) {
-  throw new Error("TODO Membre 4 : coder lireJson dans src/donnees.js");
+  //throw new Error("TODO Membre 4 : coder lireJson dans src/donnees.js");
+    try{
+      const contenu = await fs.readFile(chemin,"utf-8");
+      return JSON.parse(contenu);
+    }catch (erreur){
+      throw new Error(`Impossoble de lire le fichier JISON: ${chemin}`,{cause: erreur})
+    }
+  
 }
+
 
 // Lit les quatre fichiers EN MÊME TEMPS avec Promise.all.
 // Renvoie { parcelles, cultures, releves, recoltes }.
 export async function chargerDonnees(dossier) {
-  throw new Error("TODO Membre 4 : coder chargerDonnees dans src/donnees.js");
+  //throw new Error("TODO Membre 4 : coder chargerDonnees dans src/donnees.js");
 }
 
 // Vérifie les textes tapés dans le terminal et renvoie un nouveau relevé.
 // Exemple : creerReleve('p07', '64', '29', '2026-10-29')
 //   → { parcelle: 'P07', date: '2026-10-29', humidite: 64, temperature: 29 }
 export function creerReleve(parcelle, humiditeTexte, temperatureTexte, date) {
-  throw new Error("TODO Membre 4 : coder creerReleve dans src/donnees.js");
+  //throw new Error("TODO Membre 4 : coder creerReleve dans src/donnees.js");
 }
 
 // Ajoute le relevé à la fin du fichier JSON, enregistre le fichier,
 // puis renvoie le nouveau nombre de relevés.
 export async function ajouterReleve(chemin, releve) {
-  throw new Error("TODO Membre 4 : coder ajouterReleve dans src/donnees.js");
+  //throw new Error("TODO Membre 4 : coder ajouterReleve dans src/donnees.js");
 }
