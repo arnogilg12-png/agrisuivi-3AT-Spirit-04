@@ -42,6 +42,31 @@ export async function chargerDonnees(dossier) {
 //   → { parcelle: 'P07', date: '2026-10-29', humidite: 64, temperature: 29 }
 export function creerReleve(parcelle, humiditeTexte, temperatureTexte, date) {
   //throw new Error("TODO Membre 4 : coder creerReleve dans src/donnees.js");
+   const humidite = Number(humiditeTexte);
+    const temperature = Number(temperatureTexte);
+
+    if (!parcelle || !parcelle.trim()) {
+        throw new Error("La parcelle est obligatoire.");
+    }
+
+    if (!Number.isFinite(humidite) || humidite < 0 || humidite > 100) {
+        throw new Error("L'humidité doit être un nombre entre 0 et 100.");
+    }
+
+    if (!Number.isFinite(temperature)) {
+        throw new Error("La température doit être un nombre valide.");
+    }
+
+    if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        throw new Error("La date doit respecter le format AAAA-MM-JJ.");
+    }
+
+    return {
+        parcelle: parcelle.trim().toUpperCase(),
+        date: date,
+        humidite: humidite,
+        temperature: temperature
+    };
   
 }
 
